@@ -354,6 +354,14 @@ plt.imshow(cloud, interpolation='bilinear')
 plt.show()
 st.pyplot(fig)
 
+st.markdown("""---""")
+
+st.markdown("![Alt Text](https://media.giphy.com/media/ZgQi5Fwlh9OJZbWUhW/giphy.gif)")
+st.markdown("![Alt Text](https://media.giphy.com/media/ftdF2GY6642PdW0dh0/giphy.gif)")
+st.markdown("![Alt Text](https://media.giphy.com/media/l1J9HROlxj1WpN8Xe/giphy.gif)")
+st.markdown("![Alt Text](https://media.giphy.com/media/KLq5znDKUI4xfMjlNo/giphy.gif)")
+st.markdown("![Alt Text](https://media.giphy.com/media/xUA7b1AKW9VlX6Lg64/giphy.gif)")
+
 st.image("son_back.jpg")
 st.markdown("<h2 style='text-align: center; color: black;'>☀️ 우리는 손흥민의 시대에 살고 있다. ☀️</h2>", unsafe_allow_html=True)
 st.markdown("<h2 style='text-align: center; color: black;'>☀️ It's going to be a SONNY DAY. ☀️</h2>", unsafe_allow_html=True)
@@ -361,4 +369,3 @@ st.image("son_win.jpg")
 
 st.markdown("![Alt Text](https://media.giphy.com/media/UTKiNBL26wBRsK683S/giphy.gif)")
 st.markdown("![Alt Text](https://media.giphy.com/media/FrDYUUPYbqBDfqz7mf/giphy.gif)")
-
