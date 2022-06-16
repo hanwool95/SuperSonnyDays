@@ -1,16 +1,10 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-import emoji
-import plotly.express as px
+
 import plotly.graph_objects as go
 
-import matplotlib.pyplot as plt
-from wordcloud import WordCloud
-import seaborn as sb
 from PIL import Image
-from konlpy.tag import Komoran
-from collections import Counter
 import altair as alt
 
 # Webpage Title
@@ -66,17 +60,7 @@ st.markdown("""---""")
 st.header("2. '우리흥' vs. '옆집살라' : 득점왕을 향한 레이스")
 st.write(
     "**이번 시즌에 손흥민과 살라 모두 23골을 넣으며 공동 득점왕에 올랐다.** EPL에서 공동 득점왕이 나온 것은 이번이 5번째다. 두 선수의 득점왕 레이스를 누적 골 수와 EPL 파워랭킹 순위/점수로 살펴봤다.")
-# df_2_1 = pd.read_csv("2-1.csv", index_col=0, parse_dates=True)
-# st.line_chart(df_2_1[["손흥민 누적 골", "살라 누적 골", "누적 골 차이"]], use_container_width=True)
-# st.markdown("""---""")
 
-################################################################################################
-# def get_data():
-#     source = df_2_1
-#     source = source[source.date.gt("2004-01-01")]
-#     return source
-
-# source = get_data()
 
 source_alt = pd.read_csv("2_alt.csv", header=0, names=['date', 'player', '누적 골'])
 source_alt.date = pd.to_datetime(source_alt.date)
@@ -241,21 +225,8 @@ st.write(
 st.write(
     "  ➡️ 실제로 토트넘은 빅 6 제외 나머지 14팀 상대로 평균 2득점을 하였지만, 빅6 상대로 경기했을 때 평균 약 1.3골을 넣는 것에 그쳤다. 빅 6과의 경기는 순위와 직접적으로 연관되어 있는 라이벌 팀이기에 골의 가치가 더 크다. 손흥민은 어려운 경기, 그리고 중요한 경기에서도 꾸준히 높은 집중력을 발휘한 것을 본 그래프로 확인할 수 있다.")
 
-# df_3_1 = pd.read_csv("3-1.csv")
 
-# rd_3_1_tot = go.Scatterpolar(r=df_3_1['tot_indiv_goal_assist'], theta=df_3_1['team_name'], fill='toself', name='토트넘 개인별')
-# rd_3_1_son = go.Scatterpolar(r=df_3_1['son_goal_assist'], theta=df_3_1['team_name'], fill='toself', name='손흥민 활약')
-# rd_data_3_1 = [rd_3_1_tot, rd_3_1_son]
-# rd_fig = go.Figure(data = rd_data_3_1)
-# st.plotly_chart(rd_fig, user_container_width=True)
 st.markdown("""---""")
-
-# df_3_2 = pd.read_csv("3-2.csv")
-# rd_3_2_tot = go.Scatterpolar(r=df_3_2['tot_indiv_goal_assist'], theta=df_3_2['team_name'], fill='toself', name='토트넘 개인별')
-# rd_3_2_son = go.Scatterpolar(r=df_3_2['son_goal_assist'], theta=df_3_2['team_name'], fill='toself', name='손흥민 활약')
-# rd_data_3_2 = [rd_3_2_tot, rd_3_2_son]
-# rd_fig = go.Figure(data = rd_data_3_2)
-# st.plotly_chart(rd_fig, user_container_width=True)
 
 st.header("4. 손흥민 활약에 따른 언론보도: 기사빈도수")
 st.write("**다음으로 손흥민의 활약에 따른 국내 언론보도 양상을 분석했다.** 손흥민의 골, 어시스트 활약에 따라 전국 일간지 11개에서 보도된 관련 기사 수도 변화하는 것을 확인했다.")
@@ -298,7 +269,7 @@ with col_5_3:
 
 st.write("🥳 **승리 Keywords**")
 st.write("💙 **득점, 기록: 승리한 경기에서 ‘득점’에 대한 키워드가 가장 크다.**")
-st.write("  ➡️ 무승부, 그리고 패배로 내려가면 크기가 더 작아진다. 토트넘이 승리한 경기에서는 보통 손흥민의 ‘득점’을 많이 ‘기록’했기에 부각된 것으로 보인다. 맨체스터 시티와의 경기에서는 매번 손흥민의 활약이 있었다.")
+st.write("  ➡️ 무승부, 그리고 패배로 내려가면 크기가 더 작아진다. 토트넘이 승리한 경기에서는 보통 손흥민의 ‘득점’을 많이 ‘기록’했기에 부각된 것으로 보인다.")
 st.write("💙 **시티: 이번 시즌 우승팀은 맨체스터 “시티”이다.**")
 st.write("  ➡️ 하지만 토트넘은 맨체스터 시티와의 경기에서 모두 이겼다. 두 경기 모두 손흥민이 선발 출전 했으며, 리그 개막 경기에는 결승골을 기록했다.")
 st.write("💙 **케인: 승리한 경기에서 케인의 글자 크기가 상대적으로 크고, 무승부에서 좀 작아지며, 패배에서는 거의 보이지가 않는다.**")
@@ -307,6 +278,8 @@ st.markdown("""---""")
 st.write("🫤 **무승부 Keywords**")
 st.write("🖤 **리버풀: 이번 시즌 준우승한 팀은 “리버풀”이다.**")
 st.write("  ➡️ 토트넘은 리버풀과의 두 경기 모두 ‘무승부’를 기록했으며, 두 경기 모두 손흥민은 득점했다.")
+st.write("🖤 **감독: 리버풀 경기에서 손흥민과 가장 많이 등장한 키워드는 '클롭 리버풀 감독'이다.**")
+st.write("  ➡️ 손흥민과 클롭 감독의 우정은 많은 사람들의 관심을 받아왔다. 클롭 감독이 도르트문트를 지휘하던 시절, 손흥민은 그 도르트문트에 많은 골을 넣어서 “양봉장”(도르트문트를 꿀벌로 빚댄 표현)이라는 별명을 얻기도 했다. 클롭은 그런 손흥민을 존중해주었다.")
 st.markdown("""---""")
 st.write("🥲 **패배 Keywords**")
 st.write("❤️‍🩹 **호날두: 토트넘은 이번 시즌 맨유 상대로 2경기 모두 패배했다.**")
@@ -322,50 +295,25 @@ df_6 = pd.read_csv("6.csv")
 
 option = st.selectbox('경기를 선택해주세요!', df_6['Matches'])
 
-tagger = Komoran()
-
 if option is not None:
-    df_6_index = df_6.index[df_6['Matches'] == option]
-    sentences = df_6["기사 본문"][df_6_index]
+    df_6_index = str(df_6.index[df_6['Matches'] == option][0])
+    img = Image.open("daily/6- "+df_6_index+".jpg")
+    st.image(img, width=600)
 
 mask_arr = np.array(Image.open("son.png"))
 
-nouns = []
-for sent in sentences:
-    tagged_sent = tagger.pos(sent.strip())
-    for word, tag in tagged_sent:
-        if (tag in ['NNP', 'NNG']) and (word not in stopwords):
-            nouns.append(word)
-
-counts = Counter(nouns)
-tags = counts.most_common(50)
-
-cloud = WordCloud(width=900, height=1200,
-                  font_path='NotoSansKR-Black.otf',  # 이거 없으면 글자 다 깨짐
-                  background_color='white',
-                  mask=mask_arr,
-                  colormap='bwr',
-                  prefer_horizontal=True)
-
-cloud = cloud.generate_from_frequencies(dict(tags))
-fig = plt.figure(figsize=(15, 20))
-plt.axis('off')
-plt.imshow(cloud, interpolation='bilinear')
-plt.show()
-st.pyplot(fig)
-
 st.markdown("""---""")
 
-st.markdown("![Alt Text](https://media.giphy.com/media/ZgQi5Fwlh9OJZbWUhW/giphy.gif)")
-st.markdown("![Alt Text](https://media.giphy.com/media/ftdF2GY6642PdW0dh0/giphy.gif)")
-st.markdown("![Alt Text](https://media.giphy.com/media/l1J9HROlxj1WpN8Xe/giphy.gif)")
-st.markdown("![Alt Text](https://media.giphy.com/media/KLq5znDKUI4xfMjlNo/giphy.gif)")
-st.markdown("![Alt Text](https://media.giphy.com/media/xUA7b1AKW9VlX6Lg64/giphy.gif)")
+# st.markdown("![Alt Text](https://media.giphy.com/media/ZgQi5Fwlh9OJZbWUhW/giphy.gif)")
+# st.markdown("![Alt Text](https://media.giphy.com/media/ftdF2GY6642PdW0dh0/giphy.gif)")
+# st.markdown("![Alt Text](https://media.giphy.com/media/l1J9HROlxj1WpN8Xe/giphy.gif)")
+# st.markdown("![Alt Text](https://media.giphy.com/media/KLq5znDKUI4xfMjlNo/giphy.gif)")
+# st.markdown("![Alt Text](https://media.giphy.com/media/xUA7b1AKW9VlX6Lg64/giphy.gif)")
 
 st.image("son_back.jpg")
 st.markdown("<h2 style='text-align: center; color: black;'>☀️ 우리는 손흥민의 시대에 살고 있다. ☀️</h2>", unsafe_allow_html=True)
 st.markdown("<h2 style='text-align: center; color: black;'>☀️ It's going to be a SONNY DAY. ☀️</h2>", unsafe_allow_html=True)
-st.image("son_win.jpg")
+# st.image("son_win.jpg")
 
 st.markdown("![Alt Text](https://media.giphy.com/media/UTKiNBL26wBRsK683S/giphy.gif)")
 st.markdown("![Alt Text](https://media.giphy.com/media/FrDYUUPYbqBDfqz7mf/giphy.gif)")
